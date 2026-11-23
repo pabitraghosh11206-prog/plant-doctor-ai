@@ -1,0 +1,1629 @@
+{
+  "summary": {
+    "total_samples": 90,
+    "correct_predictions": 88,
+    "overall_accuracy": 97.77777777777777,
+    "mean_confidence": 96.11163419087728,
+    "median_confidence": 99.24148178100586,
+    "min_confidence": 48.7158317565918,
+    "max_confidence": 99.96795654296875,
+    "mean_confidence_correct": 96.72956726767801,
+    "mean_confidence_incorrect": 68.92257881164551,
+    "class_metrics": {
+      "Tomato___Early_blight": {
+        "total": 30,
+        "correct": 30,
+        "accuracy": 100.0,
+        "mean_confidence": 94.78198458353678,
+        "median_confidence": 98.91058731079102,
+        "min_confidence": 61.7202033996582,
+        "max_confidence": 99.88184356689453,
+        "confidences": [
+          99.00654602050781,
+          92.70612335205078,
+          89.8526382446289,
+          86.13459014892578,
+          99.88184356689453,
+          84.79803466796875,
+          98.09724426269531,
+          95.44107055664062,
+          99.70222473144531,
+          74.27687072753906,
+          99.78443145751953,
+          99.81987762451172,
+          91.78112030029297,
+          94.81588745117188,
+          98.9816665649414,
+          99.42111206054688,
+          61.7202033996582,
+          98.89508056640625,
+          99.8554916381836,
+          98.92609405517578,
+          91.97813415527344,
+          99.57717895507812,
+          96.85472106933594,
+          99.61377716064453,
+          99.74420166015625,
+          99.67784118652344,
+          96.13439178466797,
+          97.2570571899414,
+          99.13966369628906,
+          99.58441925048828
+        ]
+      },
+      "Tomato___Late_blight": {
+        "total": 30,
+        "correct": 28,
+        "accuracy": 93.33333333333333,
+        "mean_confidence": 94.52768300374349,
+        "median_confidence": 99.2862319946289,
+        "min_confidence": 48.7158317565918,
+        "max_confidence": 99.96795654296875,
+        "confidences": [
+          99.54995727539062,
+          97.72650909423828,
+          90.08175659179688,
+          97.16387176513672,
+          98.38624572753906,
+          99.7677230834961,
+          99.2845458984375,
+          90.66368103027344,
+          99.85020446777344,
+          98.6305923461914,
+          99.80442810058594,
+          95.97776794433594,
+          54.014225006103516,
+          99.7322006225586,
+          89.42366790771484,
+          99.52686309814453,
+          99.83216094970703,
+          99.28791809082031,
+          98.60215759277344,
+          93.49604034423828,
+          98.34808349609375,
+          99.87395477294922,
+          99.8662338256836,
+          99.96795654296875,
+          89.12932586669922,
+          99.92481994628906,
+          99.95004272460938,
+          99.8490219116211,
+          99.40270233154297,
+          48.7158317565918
+        ]
+      },
+      "Tomato___healthy": {
+        "total": 30,
+        "correct": 30,
+        "accuracy": 100.0,
+        "mean_confidence": 99.02523498535156,
+        "median_confidence": 99.44861221313477,
+        "min_confidence": 94.7571792602539,
+        "max_confidence": 99.94007110595703,
+        "confidences": [
+          99.8691635131836,
+          98.33863067626953,
+          97.39636993408203,
+          99.3368911743164,
+          99.9078140258789,
+          99.93403625488281,
+          99.70890045166016,
+          99.76742553710938,
+          97.3666000366211,
+          99.42837524414062,
+          99.2233657836914,
+          94.7571792602539,
+          99.87317657470703,
+          99.86315155029297,
+          97.4018783569336,
+          99.16206359863281,
+          99.94007110595703,
+          99.70394897460938,
+          99.25959777832031,
+          99.61896514892578,
+          99.71977233886719,
+          99.84908294677734,
+          98.68621826171875,
+          99.90235900878906,
+          99.09626007080078,
+          99.4688491821289,
+          99.8048324584961,
+          98.38818359375,
+          99.21377563476562,
+          96.77011108398438
+        ]
+      }
+    },
+    "confusion_matrix": [
+      [
+        30,
+        0,
+        0
+      ],
+      [
+        1,
+        28,
+        1
+      ],
+      [
+        0,
+        0,
+        30
+      ]
+    ],
+    "bin_stats": [
+      {
+        "range": "50-60%",
+        "count": 1,
+        "accuracy": 100.0,
+        "avg_confidence": 54.014225006103516
+      },
+      {
+        "range": "60-70%",
+        "count": 1,
+        "accuracy": 100.0,
+        "avg_confidence": 61.7202033996582
+      },
+      {
+        "range": "70-80%",
+        "count": 1,
+        "accuracy": 100.0,
+        "avg_confidence": 74.27687072753906
+      },
+      {
+        "range": "80-90%",
+        "count": 5,
+        "accuracy": 80.0,
+        "avg_confidence": 87.8676513671875
+      },
+      {
+        "range": "90-100%",
+        "count": 81,
+        "accuracy": 100.0,
+        "avg_confidence": 98.4195270302855
+      }
+    ]
+  },
+  "predictions": [
+    {
+      "index": 1,
+      "filename": "efa2f117-a774-4fcc-8445-142742aa7816___RS_Early.B 7458.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/efa2f117-a774-4fcc-8445-142742aa7816___RS_Early.B 7458.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.00654602050781,
+      "is_correct": true,
+      "probabilities": [
+        0.9900654554367065,
+        0.0025353010278195143,
+        0.00739922234788537
+      ]
+    },
+    {
+      "index": 2,
+      "filename": "1b434c52-7be4-40c4-90d5-13220f1a3eba___RS_HL 5418.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/1b434c52-7be4-40c4-90d5-13220f1a3eba___RS_HL 5418.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.8691635131836,
+      "is_correct": true,
+      "probabilities": [
+        0.0003197584010194987,
+        0.0009886123007163405,
+        0.9986916184425354
+      ]
+    },
+    {
+      "index": 3,
+      "filename": "737c2343-228f-4155-b984-13ae0da44745___RS_Early.B 6828.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/737c2343-228f-4155-b984-13ae0da44745___RS_Early.B 6828.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 92.70612335205078,
+      "is_correct": true,
+      "probabilities": [
+        0.9270612001419067,
+        0.004064001142978668,
+        0.06887476146221161
+      ]
+    },
+    {
+      "index": 4,
+      "filename": "f2540cea-220b-4ba2-bf16-7c1c7f32c38c___RS_Early.B 7997.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/f2540cea-220b-4ba2-bf16-7c1c7f32c38c___RS_Early.B 7997.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 89.8526382446289,
+      "is_correct": true,
+      "probabilities": [
+        0.8985263705253601,
+        0.09451054036617279,
+        0.006963070016354322
+      ]
+    },
+    {
+      "index": 5,
+      "filename": "7a4371b2-72c6-414e-b73e-6e4b4adab72f___RS_LB 3289.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/7a4371b2-72c6-414e-b73e-6e4b4adab72f___RS_LB 3289.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.54995727539062,
+      "is_correct": true,
+      "probabilities": [
+        5.743174915551208e-05,
+        0.9954995512962341,
+        0.004443036392331123
+      ]
+    },
+    {
+      "index": 6,
+      "filename": "bc91cb1b-aece-4108-92db-839a106351a5___RS_LB 3087.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/bc91cb1b-aece-4108-92db-839a106351a5___RS_LB 3087.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 97.72650909423828,
+      "is_correct": true,
+      "probabilities": [
+        0.0008706638473086059,
+        0.9772650599479675,
+        0.021864213049411774
+      ]
+    },
+    {
+      "index": 7,
+      "filename": "1ae826e2-5148-47bd-a44c-711ec9cc9c75___RS_HL 1954.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/1ae826e2-5148-47bd-a44c-711ec9cc9c75___RS_HL 1954.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 98.33863067626953,
+      "is_correct": true,
+      "probabilities": [
+        0.01634727232158184,
+        0.0002663425693754107,
+        0.9833863377571106
+      ]
+    },
+    {
+      "index": 8,
+      "filename": "3a00204c-5e53-4e5d-95a6-f8819031744e___RS_HL 5420.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/3a00204c-5e53-4e5d-95a6-f8819031744e___RS_HL 5420.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 97.39636993408203,
+      "is_correct": true,
+      "probabilities": [
+        0.019399262964725494,
+        0.006637067999690771,
+        0.9739636778831482
+      ]
+    },
+    {
+      "index": 9,
+      "filename": "8665efd2-fa3d-45f8-b1c0-746c99fb7d1e___RS_HL 1924.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/8665efd2-fa3d-45f8-b1c0-746c99fb7d1e___RS_HL 1924.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.3368911743164,
+      "is_correct": true,
+      "probabilities": [
+        0.0055403392761945724,
+        0.0010908155236393213,
+        0.993368923664093
+      ]
+    },
+    {
+      "index": 10,
+      "filename": "908546cd-34b8-4502-ab09-0c5bb7c1d87b___RS_LB 4912.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/908546cd-34b8-4502-ab09-0c5bb7c1d87b___RS_LB 4912.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 90.08175659179688,
+      "is_correct": true,
+      "probabilities": [
+        0.00809940230101347,
+        0.9008175730705261,
+        0.09108300507068634
+      ]
+    },
+    {
+      "index": 11,
+      "filename": "275c3337-11ee-487c-9093-bcd5e310c72c___RS_Early.B 7671.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/275c3337-11ee-487c-9093-bcd5e310c72c___RS_Early.B 7671.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 86.13459014892578,
+      "is_correct": true,
+      "probabilities": [
+        0.8613458871841431,
+        0.1343819946050644,
+        0.004272127989679575
+      ]
+    },
+    {
+      "index": 12,
+      "filename": "8e05b766-d0a9-4621-9bb4-d16bef411dda___RS_Early.B 7238.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/8e05b766-d0a9-4621-9bb4-d16bef411dda___RS_Early.B 7238.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.88184356689453,
+      "is_correct": true,
+      "probabilities": [
+        0.9988184571266174,
+        6.496081823570421e-07,
+        0.001180935767479241
+      ]
+    },
+    {
+      "index": 13,
+      "filename": "902d81fd-7e78-44b6-b71b-efa61e018c65___RS_Early.B 8100.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/902d81fd-7e78-44b6-b71b-efa61e018c65___RS_Early.B 8100.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 84.79803466796875,
+      "is_correct": true,
+      "probabilities": [
+        0.8479803800582886,
+        0.1383780688047409,
+        0.013641509227454662
+      ]
+    },
+    {
+      "index": 14,
+      "filename": "04481ca2-f94c-457e-b785-1ac05800b7ec___RS_HL 1930.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/04481ca2-f94c-457e-b785-1ac05800b7ec___RS_HL 1930.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.9078140258789,
+      "is_correct": true,
+      "probabilities": [
+        0.0006923755281604826,
+        0.00022949458798393607,
+        0.9990781545639038
+      ]
+    },
+    {
+      "index": 15,
+      "filename": "6cd8e267-d5ae-4baa-a872-4c0fc5a37d67___RS_Early.B 8184.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/6cd8e267-d5ae-4baa-a872-4c0fc5a37d67___RS_Early.B 8184.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 98.09724426269531,
+      "is_correct": true,
+      "probabilities": [
+        0.980972409248352,
+        0.00012582031195051968,
+        0.01890174299478531
+      ]
+    },
+    {
+      "index": 16,
+      "filename": "ffef8a3b-3e8a-4c24-a27e-64c41708f7a0___RS_Early.B 7132.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/ffef8a3b-3e8a-4c24-a27e-64c41708f7a0___RS_Early.B 7132.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 95.44107055664062,
+      "is_correct": true,
+      "probabilities": [
+        0.95441073179245,
+        0.0037983062211424112,
+        0.04179099574685097
+      ]
+    },
+    {
+      "index": 17,
+      "filename": "dc6516c4-a74c-465f-85a1-55608ee518da___RS_Early.B 8843.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/dc6516c4-a74c-465f-85a1-55608ee518da___RS_Early.B 8843.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.70222473144531,
+      "is_correct": true,
+      "probabilities": [
+        0.9970222115516663,
+        0.0007029069820418954,
+        0.0022749006748199463
+      ]
+    },
+    {
+      "index": 18,
+      "filename": "b35b9f8b-daca-4d12-a5be-defe68d0acc5___RS_HL 1903.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/b35b9f8b-daca-4d12-a5be-defe68d0acc5___RS_HL 1903.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.93403625488281,
+      "is_correct": true,
+      "probabilities": [
+        0.0001856343005783856,
+        0.0004739686846733093,
+        0.9993403553962708
+      ]
+    },
+    {
+      "index": 19,
+      "filename": "d78c58b2-c9d1-43f2-8b18-4455855c0f1f___RS_LB 3288.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/d78c58b2-c9d1-43f2-8b18-4455855c0f1f___RS_LB 3288.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 97.16387176513672,
+      "is_correct": true,
+      "probabilities": [
+        0.00021174908033572137,
+        0.9716387391090393,
+        0.028149517253041267
+      ]
+    },
+    {
+      "index": 20,
+      "filename": "38c1c136-d91d-4527-aa8f-623a574a41d9___RS_LB 3042.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/38c1c136-d91d-4527-aa8f-623a574a41d9___RS_LB 3042.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 98.38624572753906,
+      "is_correct": true,
+      "probabilities": [
+        9.944957128027454e-05,
+        0.9838624596595764,
+        0.016038086265325546
+      ]
+    },
+    {
+      "index": 21,
+      "filename": "be6b5fab-c3de-4d33-b7fc-87bf794d8705___RS_LB 4850.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/be6b5fab-c3de-4d33-b7fc-87bf794d8705___RS_LB 4850.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.7677230834961,
+      "is_correct": true,
+      "probabilities": [
+        0.00040820351568982005,
+        0.9976772665977478,
+        0.0019145520636811852
+      ]
+    },
+    {
+      "index": 22,
+      "filename": "b340ff00-3d44-4394-90c5-797dc39f8389___RS_LB 4953.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/b340ff00-3d44-4394-90c5-797dc39f8389___RS_LB 4953.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.2845458984375,
+      "is_correct": true,
+      "probabilities": [
+        9.415260137757286e-05,
+        0.9928454756736755,
+        0.007060348521918058
+      ]
+    },
+    {
+      "index": 23,
+      "filename": "0085ef03-aec3-431a-99a1-de286e10c0cf___RS_LB 2949.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/0085ef03-aec3-431a-99a1-de286e10c0cf___RS_LB 2949.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 90.66368103027344,
+      "is_correct": true,
+      "probabilities": [
+        0.00024098504218272865,
+        0.9066367745399475,
+        0.0931222215294838
+      ]
+    },
+    {
+      "index": 24,
+      "filename": "ae805316-66e9-4aaf-b938-8460734b90ec___RS_LB 3004.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/ae805316-66e9-4aaf-b938-8460734b90ec___RS_LB 3004.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.85020446777344,
+      "is_correct": true,
+      "probabilities": [
+        0.0008368881535716355,
+        0.9985020160675049,
+        0.0006611415301449597
+      ]
+    },
+    {
+      "index": 25,
+      "filename": "a30baff1-96fb-4df5-9511-e131359b5fd8___RS_LB 4464.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/a30baff1-96fb-4df5-9511-e131359b5fd8___RS_LB 4464.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 98.6305923461914,
+      "is_correct": true,
+      "probabilities": [
+        0.012775790877640247,
+        0.9863059520721436,
+        0.0009182774811051786
+      ]
+    },
+    {
+      "index": 26,
+      "filename": "ee052892-e935-4fbb-9344-4d23c57c6890___RS_HL 5400.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/ee052892-e935-4fbb-9344-4d23c57c6890___RS_HL 5400.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.70890045166016,
+      "is_correct": true,
+      "probabilities": [
+        0.000715860805939883,
+        0.002195230918005109,
+        0.9970889687538147
+      ]
+    },
+    {
+      "index": 27,
+      "filename": "1fa9afe6-69ab-4206-a8b5-487531391a37___RS_LB 3006.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/1fa9afe6-69ab-4206-a8b5-487531391a37___RS_LB 3006.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.80442810058594,
+      "is_correct": true,
+      "probabilities": [
+        1.90988284884952e-05,
+        0.9980442523956299,
+        0.0019366198685020208
+      ]
+    },
+    {
+      "index": 28,
+      "filename": "61b8a692-91d8-40f5-a4a4-4d910875a638___RS_HL 1966.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/61b8a692-91d8-40f5-a4a4-4d910875a638___RS_HL 1966.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.76742553710938,
+      "is_correct": true,
+      "probabilities": [
+        0.0004839734174311161,
+        0.0018418018007650971,
+        0.997674286365509
+      ]
+    },
+    {
+      "index": 29,
+      "filename": "a0d8a499-e9e4-4c88-829c-7c2270073735___RS_Early.B 8525.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/a0d8a499-e9e4-4c88-829c-7c2270073735___RS_Early.B 8525.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 74.27687072753906,
+      "is_correct": true,
+      "probabilities": [
+        0.7427687048912048,
+        0.2369782030582428,
+        0.020253056660294533
+      ]
+    },
+    {
+      "index": 30,
+      "filename": "30126310-39de-4c02-b10a-23409417a4f6___RS_HL 1826.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/30126310-39de-4c02-b10a-23409417a4f6___RS_HL 1826.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 97.3666000366211,
+      "is_correct": true,
+      "probabilities": [
+        0.013451269827783108,
+        0.012882713228464127,
+        0.9736660122871399
+      ]
+    },
+    {
+      "index": 31,
+      "filename": "df0f75cf-febd-4fde-84a0-7c4da9f97fd2___RS_LB 2534.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/df0f75cf-febd-4fde-84a0-7c4da9f97fd2___RS_LB 2534.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 95.97776794433594,
+      "is_correct": true,
+      "probabilities": [
+        0.006015559192746878,
+        0.9597777128219604,
+        0.03420672193169594
+      ]
+    },
+    {
+      "index": 32,
+      "filename": "6319585f-ed2f-4657-ae79-a23db65d0fce___RS_Early.B 7033.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/6319585f-ed2f-4657-ae79-a23db65d0fce___RS_Early.B 7033.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.78443145751953,
+      "is_correct": true,
+      "probabilities": [
+        0.9978443384170532,
+        5.747955128754256e-06,
+        0.002149908570572734
+      ]
+    },
+    {
+      "index": 33,
+      "filename": "5ea316eb-10a2-42c0-b781-40d90356ccaa___RS_HL 1935.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/5ea316eb-10a2-42c0-b781-40d90356ccaa___RS_HL 1935.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.42837524414062,
+      "is_correct": true,
+      "probabilities": [
+        0.005265647079795599,
+        0.00045061230775900185,
+        0.9942837357521057
+      ]
+    },
+    {
+      "index": 34,
+      "filename": "0be9d721-82f5-42c3-b535-7494afe01dbe___RS_HL 1814.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/0be9d721-82f5-42c3-b535-7494afe01dbe___RS_HL 1814.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.2233657836914,
+      "is_correct": true,
+      "probabilities": [
+        0.0010170175228267908,
+        0.006749363150447607,
+        0.9922336339950562
+      ]
+    },
+    {
+      "index": 35,
+      "filename": "d9ebe6a0-d46e-47fe-950e-938f7ce83afb___RS_Early.B 7419.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/d9ebe6a0-d46e-47fe-950e-938f7ce83afb___RS_Early.B 7419.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.81987762451172,
+      "is_correct": true,
+      "probabilities": [
+        0.9981988072395325,
+        1.5899584468570538e-05,
+        0.0017852882156148553
+      ]
+    },
+    {
+      "index": 36,
+      "filename": "95cd8c85-b3b1-4d90-828d-1c93ea98977a___RS_Early.B 9109.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/95cd8c85-b3b1-4d90-828d-1c93ea98977a___RS_Early.B 9109.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 91.78112030029297,
+      "is_correct": true,
+      "probabilities": [
+        0.9178112149238586,
+        0.0010165935382246971,
+        0.08117226511240005
+      ]
+    },
+    {
+      "index": 37,
+      "filename": "a3ec91aa-8503-4711-a912-0d1427e25686___RS_HL 5409.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/a3ec91aa-8503-4711-a912-0d1427e25686___RS_HL 5409.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 94.7571792602539,
+      "is_correct": true,
+      "probabilities": [
+        0.012267536483705044,
+        0.040160633623600006,
+        0.9475718140602112
+      ]
+    },
+    {
+      "index": 38,
+      "filename": "a5050bde-febc-4931-b31d-45c9652df318___RS_HL 5373.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/a5050bde-febc-4931-b31d-45c9652df318___RS_HL 5373.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.87317657470703,
+      "is_correct": true,
+      "probabilities": [
+        0.0003200565406586975,
+        0.0009481022134423256,
+        0.998731791973114
+      ]
+    },
+    {
+      "index": 39,
+      "filename": "9933b288-b5fe-4cbf-a9fa-58ef769b6f7c___RS_LB 2540.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/9933b288-b5fe-4cbf-a9fa-58ef769b6f7c___RS_LB 2540.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 54.014225006103516,
+      "is_correct": true,
+      "probabilities": [
+        0.0008905507274903357,
+        0.5401422381401062,
+        0.4589671194553375
+      ]
+    },
+    {
+      "index": 40,
+      "filename": "94ebce3c-2945-44a4-aa81-1abe8e4beea2___RS_LB 3953.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/94ebce3c-2945-44a4-aa81-1abe8e4beea2___RS_LB 3953.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.7322006225586,
+      "is_correct": true,
+      "probabilities": [
+        0.001384578994475305,
+        0.9973220229148865,
+        0.0012933553662151098
+      ]
+    },
+    {
+      "index": 41,
+      "filename": "d3a1b356-0ffa-4d47-9f52-410bbd0e3e3d___RS_Early.B 8884.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/d3a1b356-0ffa-4d47-9f52-410bbd0e3e3d___RS_Early.B 8884.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 94.81588745117188,
+      "is_correct": true,
+      "probabilities": [
+        0.948158860206604,
+        0.0035952748730778694,
+        0.048245880752801895
+      ]
+    },
+    {
+      "index": 42,
+      "filename": "929107f1-4ae9-4dae-8319-ae7cf4804236___RS_HL 1932.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/929107f1-4ae9-4dae-8319-ae7cf4804236___RS_HL 1932.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.86315155029297,
+      "is_correct": true,
+      "probabilities": [
+        0.0011482361005619168,
+        0.00022023794008418918,
+        0.9986315369606018
+      ]
+    },
+    {
+      "index": 43,
+      "filename": "ff7160f9-f8d7-4576-82b8-009bf1b63b3b___RS_LB 4974.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/ff7160f9-f8d7-4576-82b8-009bf1b63b3b___RS_LB 4974.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 89.42366790771484,
+      "is_correct": true,
+      "probabilities": [
+        0.0028765250463038683,
+        0.89423668384552,
+        0.10288680344820023
+      ]
+    },
+    {
+      "index": 44,
+      "filename": "ec6e43d3-512d-4908-99f2-c9e2a0be54be___RS_HL 4202.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/ec6e43d3-512d-4908-99f2-c9e2a0be54be___RS_HL 4202.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 97.4018783569336,
+      "is_correct": true,
+      "probabilities": [
+        0.0017955097137019038,
+        0.02418578788638115,
+        0.9740187525749207
+      ]
+    },
+    {
+      "index": 45,
+      "filename": "22d5cf8c-308f-417d-9b05-b00a0791ecef___RS_LB 4797.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/22d5cf8c-308f-417d-9b05-b00a0791ecef___RS_LB 4797.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.52686309814453,
+      "is_correct": true,
+      "probabilities": [
+        0.00021372632181737572,
+        0.9952686429023743,
+        0.004517597611993551
+      ]
+    },
+    {
+      "index": 46,
+      "filename": "9e506566-6697-4444-a2f3-a3931d34bbf3___RS_Early.B 6899.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/9e506566-6697-4444-a2f3-a3931d34bbf3___RS_Early.B 6899.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 98.9816665649414,
+      "is_correct": true,
+      "probabilities": [
+        0.9898166656494141,
+        0.000591843796428293,
+        0.009591453708708286
+      ]
+    },
+    {
+      "index": 47,
+      "filename": "e693354a-053c-4093-8642-cc8f5f9eb2cc___RS_HL 1746.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/e693354a-053c-4093-8642-cc8f5f9eb2cc___RS_HL 1746.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.16206359863281,
+      "is_correct": true,
+      "probabilities": [
+        0.0016606353456154466,
+        0.006718758959323168,
+        0.991620659828186
+      ]
+    },
+    {
+      "index": 48,
+      "filename": "d472b6e3-a00c-4b4e-b13a-cdababff9d24___RS_Early.B 7699.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/d472b6e3-a00c-4b4e-b13a-cdababff9d24___RS_Early.B 7699.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.42111206054688,
+      "is_correct": true,
+      "probabilities": [
+        0.9942111372947693,
+        0.00036151090171188116,
+        0.005427338648587465
+      ]
+    },
+    {
+      "index": 49,
+      "filename": "7e6c8297-dfe1-4826-826e-01d696cc263b___RS_HL 1863.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/7e6c8297-dfe1-4826-826e-01d696cc263b___RS_HL 1863.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.94007110595703,
+      "is_correct": true,
+      "probabilities": [
+        0.0004827835946343839,
+        0.00011646841448964551,
+        0.9994007349014282
+      ]
+    },
+    {
+      "index": 50,
+      "filename": "d97f6469-bef9-4276-b918-efb1a1859fb7___RS_Early.B 6958.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/d97f6469-bef9-4276-b918-efb1a1859fb7___RS_Early.B 6958.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 61.7202033996582,
+      "is_correct": true,
+      "probabilities": [
+        0.6172020435333252,
+        0.3656553030014038,
+        0.01714264415204525
+      ]
+    },
+    {
+      "index": 51,
+      "filename": "23f4d3b1-23f4-43fb-96c2-dae37224ec74___RS_HL 1803.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/23f4d3b1-23f4-43fb-96c2-dae37224ec74___RS_HL 1803.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.70394897460938,
+      "is_correct": true,
+      "probabilities": [
+        0.002389851026237011,
+        0.0005705949733965099,
+        0.9970394968986511
+      ]
+    },
+    {
+      "index": 52,
+      "filename": "667c593c-acbf-468a-91a3-6fd8006c46c2___RS_Early.B 7830.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/667c593c-acbf-468a-91a3-6fd8006c46c2___RS_Early.B 7830.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 98.89508056640625,
+      "is_correct": true,
+      "probabilities": [
+        0.988950788974762,
+        0.005335032008588314,
+        0.005714074242860079
+      ]
+    },
+    {
+      "index": 53,
+      "filename": "799b10e8-ba67-4e08-9abe-748789572ad1___RS_HL 1881.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/799b10e8-ba67-4e08-9abe-748789572ad1___RS_HL 1881.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.25959777832031,
+      "is_correct": true,
+      "probabilities": [
+        0.007308505475521088,
+        9.549743845127523e-05,
+        0.9925959706306458
+      ]
+    },
+    {
+      "index": 54,
+      "filename": "02212653-e92b-49aa-96b7-9497af51e502___RS_LB 3151.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/02212653-e92b-49aa-96b7-9497af51e502___RS_LB 3151.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.83216094970703,
+      "is_correct": true,
+      "probabilities": [
+        6.723123078700155e-05,
+        0.9983215928077698,
+        0.0016111638396978378
+      ]
+    },
+    {
+      "index": 55,
+      "filename": "9d7d1bb9-1b10-4a8f-a961-e404b9d5acf8___RS_HL 1960.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/9d7d1bb9-1b10-4a8f-a961-e404b9d5acf8___RS_HL 1960.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.61896514892578,
+      "is_correct": true,
+      "probabilities": [
+        0.003085704054683447,
+        0.0007246697205118835,
+        0.9961896538734436
+      ]
+    },
+    {
+      "index": 56,
+      "filename": "1d301622-e359-49d5-b4ca-6837f254fd1b___RS_Early.B 6719.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/1d301622-e359-49d5-b4ca-6837f254fd1b___RS_Early.B 6719.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.8554916381836,
+      "is_correct": true,
+      "probabilities": [
+        0.9985548853874207,
+        4.11095425079111e-05,
+        0.0014040711103007197
+      ]
+    },
+    {
+      "index": 57,
+      "filename": "24a34259-1c47-4e87-ac83-5decf37b42e4___RS_Early.B 6896.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/24a34259-1c47-4e87-ac83-5decf37b42e4___RS_Early.B 6896.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 98.92609405517578,
+      "is_correct": true,
+      "probabilities": [
+        0.9892609119415283,
+        0.004458765499293804,
+        0.006280273664742708
+      ]
+    },
+    {
+      "index": 58,
+      "filename": "77725a5a-c0b8-4b7c-bc42-ac99f51428c1___RS_Early.B 7401.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/77725a5a-c0b8-4b7c-bc42-ac99f51428c1___RS_Early.B 7401.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 91.97813415527344,
+      "is_correct": true,
+      "probabilities": [
+        0.9197813272476196,
+        0.050710808485746384,
+        0.029507838189601898
+      ]
+    },
+    {
+      "index": 59,
+      "filename": "2ccb9ee9-faac-4d32-9af5-29497fa2e028___RS_HL 1837.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/2ccb9ee9-faac-4d32-9af5-29497fa2e028___RS_HL 1837.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.71977233886719,
+      "is_correct": true,
+      "probabilities": [
+        0.002447553677484393,
+        0.0003546841035131365,
+        0.9971977472305298
+      ]
+    },
+    {
+      "index": 60,
+      "filename": "07fea080-7f6b-48e9-b6b5-10d7daf57610___RS_LB 3210.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/07fea080-7f6b-48e9-b6b5-10d7daf57610___RS_LB 3210.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.28791809082031,
+      "is_correct": true,
+      "probabilities": [
+        4.8485049774171785e-05,
+        0.9928792119026184,
+        0.007072314154356718
+      ]
+    },
+    {
+      "index": 61,
+      "filename": "b42621c3-f751-46e1-a8d2-83ed85b90554___RS_HL 1740.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/b42621c3-f751-46e1-a8d2-83ed85b90554___RS_HL 1740.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.84908294677734,
+      "is_correct": true,
+      "probabilities": [
+        0.0008863541879691184,
+        0.0006228137644939125,
+        0.9984908103942871
+      ]
+    },
+    {
+      "index": 62,
+      "filename": "e71a27b3-20d5-40e8-ad01-4c1942d46654___RS_LB 4085.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/e71a27b3-20d5-40e8-ad01-4c1942d46654___RS_LB 4085.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 98.60215759277344,
+      "is_correct": true,
+      "probabilities": [
+        0.0011774381855502725,
+        0.9860215783119202,
+        0.01280106883496046
+      ]
+    },
+    {
+      "index": 63,
+      "filename": "5a42a288-8be0-4985-9ca5-105f75c8ee01___RS_LB 3275.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/5a42a288-8be0-4985-9ca5-105f75c8ee01___RS_LB 3275.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 93.49604034423828,
+      "is_correct": true,
+      "probabilities": [
+        0.007217369507998228,
+        0.9349604249000549,
+        0.05782220512628555
+      ]
+    },
+    {
+      "index": 64,
+      "filename": "0f4ebc5a-d646-436a-919d-961342997cde___RS_HL 4183.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/0f4ebc5a-d646-436a-919d-961342997cde___RS_HL 4183.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 98.68621826171875,
+      "is_correct": true,
+      "probabilities": [
+        0.006046442314982414,
+        0.007091370411217213,
+        0.9868621826171875
+      ]
+    },
+    {
+      "index": 65,
+      "filename": "f37f6160-4f5b-447f-b497-cc6eb7662e3b___RS_LB 4951.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/f37f6160-4f5b-447f-b497-cc6eb7662e3b___RS_LB 4951.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 98.34808349609375,
+      "is_correct": true,
+      "probabilities": [
+        0.0017743177013471723,
+        0.9834808707237244,
+        0.01474483497440815
+      ]
+    },
+    {
+      "index": 66,
+      "filename": "8ff3274d-02b2-4859-9415-982aa4ec7d8c___RS_Early.B 7465.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/8ff3274d-02b2-4859-9415-982aa4ec7d8c___RS_Early.B 7465.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.57717895507812,
+      "is_correct": true,
+      "probabilities": [
+        0.9957718253135681,
+        5.776665057055652e-05,
+        0.0041703772731125355
+      ]
+    },
+    {
+      "index": 67,
+      "filename": "90596f7b-1efa-4595-8d57-bcbd4c48253f___RS_LB 4753.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/90596f7b-1efa-4595-8d57-bcbd4c48253f___RS_LB 4753.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.87395477294922,
+      "is_correct": true,
+      "probabilities": [
+        0.00032888713758438826,
+        0.9987395405769348,
+        0.0009316415525972843
+      ]
+    },
+    {
+      "index": 68,
+      "filename": "f7db505f-aabe-4b96-b719-8c930b5ff471___RS_Early.B 9224.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/f7db505f-aabe-4b96-b719-8c930b5ff471___RS_Early.B 9224.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 96.85472106933594,
+      "is_correct": true,
+      "probabilities": [
+        0.9685472249984741,
+        0.015291028656065464,
+        0.01616172306239605
+      ]
+    },
+    {
+      "index": 69,
+      "filename": "541591d3-3560-4540-ac2c-9749936e80ae___RS_LB 2553.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/541591d3-3560-4540-ac2c-9749936e80ae___RS_LB 2553.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.8662338256836,
+      "is_correct": true,
+      "probabilities": [
+        2.499991205695551e-05,
+        0.9986623525619507,
+        0.0013126209378242493
+      ]
+    },
+    {
+      "index": 70,
+      "filename": "a0622f86-c94d-4b59-9483-68c57dee81fa___RS_LB 4794.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/a0622f86-c94d-4b59-9483-68c57dee81fa___RS_LB 4794.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.96795654296875,
+      "is_correct": true,
+      "probabilities": [
+        4.59256489193649e-06,
+        0.9996795654296875,
+        0.00031575706088915467
+      ]
+    },
+    {
+      "index": 71,
+      "filename": "9a6eb7c4-6b43-477a-89e0-69f62ef67991___RS_HL 1846.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/9a6eb7c4-6b43-477a-89e0-69f62ef67991___RS_HL 1846.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.90235900878906,
+      "is_correct": true,
+      "probabilities": [
+        0.0007093544118106365,
+        0.0002671338734216988,
+        0.9990235567092896
+      ]
+    },
+    {
+      "index": 72,
+      "filename": "bde33d08-678c-4f84-b80e-fcb986a9a446___RS_HL 5415.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/bde33d08-678c-4f84-b80e-fcb986a9a446___RS_HL 5415.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.09626007080078,
+      "is_correct": true,
+      "probabilities": [
+        0.00044207923929207027,
+        0.00859540980309248,
+        0.990962564945221
+      ]
+    },
+    {
+      "index": 73,
+      "filename": "5df30492-0b54-474d-8883-bba9474ca88f___RS_HL 1801.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/5df30492-0b54-474d-8883-bba9474ca88f___RS_HL 1801.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.4688491821289,
+      "is_correct": true,
+      "probabilities": [
+        0.002594511490315199,
+        0.0027169317472726107,
+        0.9946885108947754
+      ]
+    },
+    {
+      "index": 74,
+      "filename": "de9a8669-d437-40f0-aa56-fe2d8276a1e0___RS_HL 1910.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/de9a8669-d437-40f0-aa56-fe2d8276a1e0___RS_HL 1910.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.8048324584961,
+      "is_correct": true,
+      "probabilities": [
+        0.001416397630237043,
+        0.000535238126758486,
+        0.9980483055114746
+      ]
+    },
+    {
+      "index": 75,
+      "filename": "e5c94100-3e1c-4fb1-8b6b-f281b491adff___RS_Early.B 8604.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/e5c94100-3e1c-4fb1-8b6b-f281b491adff___RS_Early.B 8604.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.61377716064453,
+      "is_correct": true,
+      "probabilities": [
+        0.996137797832489,
+        0.0021651326678693295,
+        0.001697047264315188
+      ]
+    },
+    {
+      "index": 76,
+      "filename": "60418916-8278-448a-af45-21ee8ef60a95___RS_Early.B 7957.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/60418916-8278-448a-af45-21ee8ef60a95___RS_Early.B 7957.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.74420166015625,
+      "is_correct": true,
+      "probabilities": [
+        0.9974420070648193,
+        2.578786961748847e-06,
+        0.002555374288931489
+      ]
+    },
+    {
+      "index": 77,
+      "filename": "61b05f0a-14bc-4c8f-a256-57c8b8898d8c___RS_HL 1769.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/61b05f0a-14bc-4c8f-a256-57c8b8898d8c___RS_HL 1769.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 98.38818359375,
+      "is_correct": true,
+      "probabilities": [
+        0.015243259258568287,
+        0.000874896883033216,
+        0.9838818311691284
+      ]
+    },
+    {
+      "index": 78,
+      "filename": "57980690-2488-4715-ae89-84e84d17ee10___RS_LB 3978.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/57980690-2488-4715-ae89-84e84d17ee10___RS_LB 3978.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 89.12932586669922,
+      "is_correct": false,
+      "probabilities": [
+        0.0004105755069758743,
+        0.10829611122608185,
+        0.8912932872772217
+      ]
+    },
+    {
+      "index": 79,
+      "filename": "85bbcdd2-a9fe-46d1-8e0e-f4e2c5e885fe___RS_LB 3218.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/85bbcdd2-a9fe-46d1-8e0e-f4e2c5e885fe___RS_LB 3218.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.92481994628906,
+      "is_correct": true,
+      "probabilities": [
+        1.592964690644294e-05,
+        0.999248206615448,
+        0.0007358095608651638
+      ]
+    },
+    {
+      "index": 80,
+      "filename": "f9580dc3-d5d9-4990-a64d-3974a9d1c687___RS_Early.B 8755.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/f9580dc3-d5d9-4990-a64d-3974a9d1c687___RS_Early.B 8755.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.67784118652344,
+      "is_correct": true,
+      "probabilities": [
+        0.9967784285545349,
+        0.0018586688674986362,
+        0.0013628690503537655
+      ]
+    },
+    {
+      "index": 81,
+      "filename": "4eacc117-bab5-40ff-bde0-dbc6b2a35822___RS_Early.B 7999.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/4eacc117-bab5-40ff-bde0-dbc6b2a35822___RS_Early.B 7999.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 96.13439178466797,
+      "is_correct": true,
+      "probabilities": [
+        0.9613438844680786,
+        0.004431729204952717,
+        0.03422434628009796
+      ]
+    },
+    {
+      "index": 82,
+      "filename": "73845010-b5b2-4604-8055-388c4222592a___RS_Early.B 6767.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/73845010-b5b2-4604-8055-388c4222592a___RS_Early.B 6767.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 97.2570571899414,
+      "is_correct": true,
+      "probabilities": [
+        0.9725705981254578,
+        0.004012324381619692,
+        0.02341708168387413
+      ]
+    },
+    {
+      "index": 83,
+      "filename": "13b1b19c-6720-4238-b384-4c86ea119ace___RS_LB 2765.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/13b1b19c-6720-4238-b384-4c86ea119ace___RS_LB 2765.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.95004272460938,
+      "is_correct": true,
+      "probabilities": [
+        9.315638453699648e-05,
+        0.9995003938674927,
+        0.00040644261753186584
+      ]
+    },
+    {
+      "index": 84,
+      "filename": "544b5324-f697-4af8-90d4-47b7b86691c6___RS_Early.B 7028.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/544b5324-f697-4af8-90d4-47b7b86691c6___RS_Early.B 7028.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.13966369628906,
+      "is_correct": true,
+      "probabilities": [
+        0.9913966059684753,
+        0.0028273153584450483,
+        0.005776131525635719
+      ]
+    },
+    {
+      "index": 85,
+      "filename": "414f6249-9f78-4af5-9593-9d5a7e7d979f___RS_HL 1918.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/414f6249-9f78-4af5-9593-9d5a7e7d979f___RS_HL 1918.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 99.21377563476562,
+      "is_correct": true,
+      "probabilities": [
+        0.007035262882709503,
+        0.0008270246325992048,
+        0.9921377301216125
+      ]
+    },
+    {
+      "index": 86,
+      "filename": "c6204cb3-cd9f-4d7b-92a6-9773fe562cab___RS_HL 1939.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___healthy/c6204cb3-cd9f-4d7b-92a6-9773fe562cab___RS_HL 1939.JPG",
+      "actual_class": "Tomato___healthy",
+      "actual_idx": 2,
+      "predicted_class": "Tomato___healthy",
+      "predicted_idx": 2,
+      "confidence": 96.77011108398438,
+      "is_correct": true,
+      "probabilities": [
+        0.021265599876642227,
+        0.011033236980438232,
+        0.9677010774612427
+      ]
+    },
+    {
+      "index": 87,
+      "filename": "5ebe5b4f-c3e3-435d-b2d5-49fa1002dbaa___RS_LB 2955.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/5ebe5b4f-c3e3-435d-b2d5-49fa1002dbaa___RS_LB 2955.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.8490219116211,
+      "is_correct": true,
+      "probabilities": [
+        0.00032064563129097223,
+        0.9984902143478394,
+        0.0011891148751601577
+      ]
+    },
+    {
+      "index": 88,
+      "filename": "f2676f08-798e-4291-8aa2-0655ca54cb07___RS_LB 4292.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/f2676f08-798e-4291-8aa2-0655ca54cb07___RS_LB 4292.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Late_blight",
+      "predicted_idx": 1,
+      "confidence": 99.40270233154297,
+      "is_correct": true,
+      "probabilities": [
+        0.002324676141142845,
+        0.9940270185470581,
+        0.003648236161097884
+      ]
+    },
+    {
+      "index": 89,
+      "filename": "146c4ea6-cf74-4607-9b8e-19c69c85ec86___RS_LB 4641.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Late_blight/146c4ea6-cf74-4607-9b8e-19c69c85ec86___RS_LB 4641.JPG",
+      "actual_class": "Tomato___Late_blight",
+      "actual_idx": 1,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 48.7158317565918,
+      "is_correct": false,
+      "probabilities": [
+        0.48715832829475403,
+        0.4641476571559906,
+        0.04869401082396507
+      ]
+    },
+    {
+      "index": 90,
+      "filename": "cd025ad0-9486-4ee6-b545-c9040dc4e1c7___RS_Early.B 8821.JPG",
+      "filepath": "/Users/pabitraghosh/Desktop/PlantVillage/validation/Tomato___Early_blight/cd025ad0-9486-4ee6-b545-c9040dc4e1c7___RS_Early.B 8821.JPG",
+      "actual_class": "Tomato___Early_blight",
+      "actual_idx": 0,
+      "predicted_class": "Tomato___Early_blight",
+      "predicted_idx": 0,
+      "confidence": 99.58441925048828,
+      "is_correct": true,
+      "probabilities": [
+        0.9958441853523254,
+        0.0030189657118171453,
+        0.001136839622631669
+      ]
+    }
+  ]
+}
