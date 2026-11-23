@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🍅 Plant Doctor AI
+# 🍅 PADOC - (Plant Doctor AI)
 
 ### Tomato leaf disease classification and source-linked care guidance
 
