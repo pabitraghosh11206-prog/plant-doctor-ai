@@ -1,163 +1,241 @@
 """
-Predict plant diseases using trained CNN model
+Predict plant diseases using trained CNN model with calibrated confidence scoring.
 """
 import os
+import sys
+import json
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
 from PIL import Image
 
+DEFAULT_MODEL_PATH = 'best_model.h5'
+METADATA_PATH = 'class_names.json'
+FALLBACK_CONFIG_PATH = '/Users/pabitraghosh/Desktop/Plant Doctor AI/plantvillage_dataset.json'
+
+DISEASE_INFO = {
+    'Potato___Early_blight': {
+        'display_name': 'Potato Early Blight',
+        'pathogen': 'Fungus (Alternaria solani)',
+        'symptoms': 'Brown/black concentric rings (target-like spots) on older leaves, yellowing margins.',
+        'recommendation': 'Remove infected lower leaves. Apply copper-based or mancozeb fungicide. Avoid overhead watering.'
+    },
+    'Potato___Late_blight': {
+        'display_name': 'Potato Late Blight',
+        'pathogen': 'Oomycete (Phytophthora infestans)',
+        'symptoms': 'Water-soaked dark lesions on leaf tips/margins, white mold on underside in humid conditions.',
+        'recommendation': 'CRITICAL: Act immediately. Apply systemic fungicides (chlorothalonil, metalaxyl). Destroy severely infected foliage.'
+    },
+    'Potato___healthy': {
+        'display_name': 'Potato Healthy Leaf',
+        'pathogen': 'None (Healthy)',
+        'symptoms': 'Uniform green foliage with normal texture and no lesions.',
+        'recommendation': 'Maintain regular monitoring, balanced fertilization, and good soil drainage.'
+    }
+}
+
 
 class PlantDiseasePredictor:
     """
-    Class to handle predictions for plant disease detection
+    Robust predictor for plant disease classification with confidence scoring.
     """
-    
-    def __init__(self, model_path='best_model.h5', class_names=None, config_path=None):
-        """
-        Initialize the predictor with a trained model
+    def __init__(self, model_path=DEFAULT_MODEL_PATH, metadata_path=METADATA_PATH, config_path=FALLBACK_CONFIG_PATH):
+        if not os.path.exists(model_path):
+            raise FileNotFoundError(f"Model file not found at: {model_path}")
         
-        Args:
-            model_path: Path to the trained h5 model
-            class_names: List of disease names (order must match training)
-            config_path: Path to JSON config file
-        """
         self.model = keras.models.load_model(model_path)
-        
-        import json
-        
-        config_path_arg = "/Users/pabitraghosh/Desktop/Plant Doctor AI/plantvillage_dataset.json"
-        if class_names is None:
-            # Try to load from config file
-            if config_path_arg and os.path.exists(config_path_arg):
-                with open(config_path_arg, 'r') as f:
-                    config_data = json.load(f)
-                classes = config_data.get('classes', [])
-                if classes:
-                    self.class_names = [c['label'] for c in classes]
-            else:
-                # Default disease categories
-                self.class_names = [
-                    'Apple___Apple_scab',
-                    'Apple___Black_rot',
-                    'Apple___Cedar_apple_rust',
-                    'Apple___Healthy',
-                    'Cherry___Bacterial_canker'
-                ]
-        else:
-            self.class_names = class_names
-        
-        # Preprocess input to match model expectations
         self.input_size = (224, 224)
+        
+        # Load class names
+        self.class_names = []
+        self.class_display_names = {}
+        
+        # Priority 1: class_names.json (generated during training)
+        if metadata_path and os.path.exists(metadata_path):
+            try:
+                with open(metadata_path, 'r') as f:
+                    meta = json.load(f)
+                self.class_names = meta.get('class_names', [])
+                for info in meta.get('classes_info', []):
+                    self.class_display_names[info['label']] = info.get('display_name', info['label'])
+            except Exception as e:
+                print(f"Warning loading {metadata_path}: {e}")
 
-    def preprocess_image(self, img_path):
+        # Priority 2: plantvillage_dataset.json
+        if not self.class_names and config_path and os.path.exists(config_path):
+            try:
+                with open(config_path, 'r') as f:
+                    cfg = json.load(f)
+                self.class_names = [c['label'] for c in cfg.get('classes', [])]
+                for c in cfg.get('classes', []):
+                    self.class_display_names[c['label']] = c.get('name', c['label'])
+            except Exception as e:
+                print(f"Warning loading {config_path}: {e}")
+
+        # Priority 3: Fallback defaults
+        if not self.class_names:
+            self.class_names = [
+                'Potato___Early_blight',
+                'Potato___Late_blight',
+                'Potato___healthy'
+            ]
+
+        # Determine if model requires manual scaling or has internal preprocessing
+        # Newer models have Built-in MobileNetV2 preprocessing (expects [0, 255])
+        self.has_internal_preprocessing = any(
+            'preprocess_input' in layer.name or 'true_divide' in layer.name
+            for layer in self.model.layers
+        )
+
+    def preprocess_image(self, img_input):
         """
-        Load and preprocess an image for prediction
+        Load and format image to (1, 224, 224, 3) in range [0, 255].
         """
-        img = image.load_img(img_path, target_size=self.input_size)
-        img_array = image.img_to_array(img)
-        img_array = np.expand_dims(img_array, axis=0) / 255.0
+        if isinstance(img_input, str):
+            img = image.load_img(img_input, target_size=self.input_size)
+            img_array = image.img_to_array(img)
+        elif isinstance(img_input, Image.Image):
+            img = img_input.resize(self.input_size)
+            img_array = image.img_to_array(img)
+        elif isinstance(img_input, np.ndarray):
+            if img_input.shape[:2] != self.input_size:
+                img_pil = Image.fromarray(img_input.astype('uint8')).resize(self.input_size)
+                img_array = image.img_to_array(img_pil)
+            else:
+                img_array = img_input.astype('float32')
+        else:
+            raise ValueError(f"Unsupported image input type: {type(img_input)}")
+
+        # Ensure batch dimension
+        if len(img_array.shape) == 3:
+            img_array = np.expand_dims(img_array, axis=0)
+
+        # Ensure float32 in [0, 255]
+        if np.max(img_array) <= 1.0:
+            img_array = img_array * 255.0
+
         return img_array
 
     def predict(self, img_path):
         """
-        Predict the disease for a given image
+        Predict plant disease and return calibrated probability distribution.
         """
         try:
             img_array = self.preprocess_image(img_path)
-            prediction = self.model.predict(img_array)[0]
-            class_idx = np.argmax(prediction)
-            class_prob = float(prediction[class_idx])
-            top_classes = []
-            top_probs = []
+            raw_predictions = self.model.predict(img_array, verbose=0)[0]
             
-            for i in range(len(prediction)):
-                top_classes.append(self.class_names[i])
-                top_probs.append(round(float(prediction[i]), 3))
+            # Sort all predictions by descending probability
+            class_prob_pairs = []
+            for i, prob in enumerate(raw_predictions):
+                label = self.class_names[i] if i < len(self.class_names) else f"Class_{i}"
+                display = self.class_display_names.get(label, label.replace('___', ' - ').replace('_', ' '))
+                class_prob_pairs.append({
+                    'class_label': label,
+                    'display_name': display,
+                    'probability': float(prob),
+                    'percentage': float(prob * 100.0)
+                })
             
-            result = {
-                'image_path': img_path,
-                'predicted_class': self.class_names[class_idx],
-                'probability': class_prob * 100,
-                'all_predictions': list(zip(top_classes, top_probs)),
-                'success': True
+            # Sort descending
+            class_prob_pairs.sort(key=lambda x: x['probability'], reverse=True)
+            top_prediction = class_prob_pairs[0]
+            confidence_pct = top_prediction['percentage']
+
+            # Categorize confidence tier
+            if confidence_pct >= 85.0:
+                confidence_tier = "HIGH"
+                confidence_desc = "High certainty. Symptoms strongly match characteristic pathology patterns."
+            elif confidence_pct >= 65.0:
+                confidence_tier = "MODERATE"
+                confidence_desc = "Moderate certainty. Consider checking for early symptom progression."
+            else:
+                confidence_tier = "LOW / UNCERTAIN"
+                confidence_desc = "Low certainty. Recommend taking a clearer photo in good lighting."
+
+            info = DISEASE_INFO.get(top_prediction['class_label'], {})
+
+            return {
+                'success': True,
+                'image_path': str(img_path),
+                'predicted_class': top_prediction['class_label'],
+                'display_name': top_prediction['display_name'],
+                'confidence': confidence_pct,
+                'confidence_tier': confidence_tier,
+                'confidence_description': confidence_desc,
+                'pathogen': info.get('pathogen', 'N/A'),
+                'symptoms': info.get('symptoms', 'N/A'),
+                'recommendation': info.get('recommendation', 'N/A'),
+                'all_predictions': class_prob_pairs
             }
-            
-            return result
-            
         except Exception as e:
             return {
-                'image_path': img_path,
-                'predicted_class': None,
-                'probability': 0,
-                'all_predictions': [],
                 'success': False,
-                'error': str(e)
+                'image_path': str(img_path),
+                'error': str(e),
+                'predicted_class': None,
+                'confidence': 0.0,
+                'all_predictions': []
             }
 
 
 def print_prediction_result(result):
-    """Print formatted prediction results"""
-    if result['success']:
-        print("\n" + "=" * 60)
-        print("PREDICTION RESULT:")
-        print("=" * 60)
-        
-        print(f"\nPredicted Disease: {result['predicted_class']}")
-        print(f"Confidence: {result['probability']:.2f}%")
-        
-        print("\nTop Predictions (in descending order):")
-        print("-" * 40)
-        for cls, prob in result['all_predictions']:
-            bar = "█" * int(prob * 20)
-            print(f"{cls:<40} [{bar:<20}] {prob:.1f}%")
-        
-        print("=" * 60)
-    else:
-        if 'error' in result and result['error']:
-            print(f"Error: {result['error']}")
-        else:
-            print("Prediction failed. Please ensure the model is trained.")
+    """Print beautifully formatted diagnosis report with confidence metrics"""
+    if not result.get('success'):
+        print("\n" + "=" * 65)
+        print("PREDICTION FAILED")
+        print("=" * 65)
+        print(f"Error: {result.get('error', 'Unknown error')}")
+        return
+
+    print("\n" + "=" * 65)
+    print("PLANT DOCTOR AI - DIAGNOSIS REPORT")
+    print("=" * 65)
+    print(f"Image:            {os.path.basename(result['image_path'])}")
+    print(f"Diagnosis:        {result['display_name']}")
+    print(f"Confidence:       {result['confidence']:.2f}% [{result['confidence_tier']}]")
+    print(f"Certainty Note:   {result['confidence_description']}")
+    print(f"Pathogen:         {result['pathogen']}")
+    print("-" * 65)
+    print(f"Symptoms:         {result['symptoms']}")
+    print(f"Recommendation:   {result['recommendation']}")
+
+    print("\n" + "=" * 65)
+    print("CLASS PROBABILITY DISTRIBUTION (Ranked):")
+    print("=" * 65)
+    for p in result['all_predictions']:
+        pct = p['percentage']
+        bar_len = int(round(pct / 5))  # 20 blocks = 100%
+        bar = "█" * bar_len
+        print(f"  {p['display_name']:<30} [{bar:<20}] {pct:6.2f}%")
+    print("=" * 65 + "\n")
 
 
-def predict_image(image_path='test.jpg', model_path='best_model.h5', config_path=None):
-    """
-    Simple function to predict a single image
-    """
-    # Check if model exists
-    if not os.path.exists(model_path):
-        raise FileNotFoundError(f"Model not found at {model_path}. Please train a model first.")
-    
-    predictor = PlantDiseasePredictor(model_path=model_path, config_path=config_path)
+def predict_image(image_path, model_path=DEFAULT_MODEL_PATH):
+    """Simple functional API to predict a single image"""
+    predictor = PlantDiseasePredictor(model_path=model_path)
     return predictor.predict(image_path)
 
 
 def main():
-    """Main function to predict from an image file"""
-    import sys
-    
     if len(sys.argv) < 2:
-        # Use default test image if no argument provided
-        print("=" * 60)
-        print("Plant Disease Detection - Image Prediction")
-        print("=" * 60)
-        result = predict_image()
-        print_prediction_result(result)
-    else:
-        # Predict from command line argument
-        img_path = sys.argv[1]
-        print(f"Analyzing image: {img_path}")
-        
-        try:
-            if not os.path.exists(img_path):
-                raise FileNotFoundError(f"Image not found at {img_path}")
-            
-            result = predict_image(image_path=img_path)
-            print_prediction_result(result)
-            
-        except Exception as e:
-            print(f"Error: {str(e)}")
+        print("=" * 65)
+        print("Plant Doctor AI - Image Disease Predictor")
+        print("=" * 65)
+        print("Usage: python predict.py <path_to_leaf_image.jpg> [model_path]")
+        print("\nExample:")
+        print("  python predict.py /path/to/leaf.jpg")
+        return
+
+    img_path = sys.argv[1]
+    model_path = sys.argv[2] if len(sys.argv) > 2 else DEFAULT_MODEL_PATH
+
+    if not os.path.exists(img_path):
+        print(f"Error: Image not found at {img_path}")
+        return
+
+    result = predict_image(img_path, model_path=model_path)
+    print_prediction_result(result)
 
 
 if __name__ == "__main__":

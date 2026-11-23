@@ -1,31 +1,31 @@
 {
-  "dataset_name": "Plant Village Potato Disease Dataset",
-  "source": "Kaggle Plant Village Dataset - Potato Varieties",
-  "description": "A dataset for potato disease detection and classification",
+  "dataset_name": "Plant Village Tomato Disease Dataset",
+  "source": "Kaggle Plant Village Dataset - Tomato Varieties",
+  "description": "A dataset for tomato disease detection and classification",
   "classes": [
     {
-      "label": "Potato___Early_blight",
+      "label": "Tomato___Early_blight",
       "class_index": 0,
-      "name": "Potato Early Blight"
+      "name": "Tomato Early Blight"
     },
     {
-      "label": "Potato___Late_blight",
+      "label": "Tomato___Late_blight",
       "class_index": 1,
-      "name": "Potato Late Blight"
+      "name": "Tomato Late Blight"
     },
     {
-      "label": "Potato___healthy",
+      "label": "Tomato___healthy",
       "class_index": 2,
-      "name": "Potato Healthy"
+      "name": "Tomato Healthy"
     }
   ],
   "training_data": [
-    {"image_id": "1", "label": "Potato___Early_blight"},
-    {"image_id": "2", "label": "Potato___Late_blight"},
-    {"image_id": "3", "label": "Potato___healthy"}
+    {"image_id": "1", "label": "Tomato___Early_blight"},
+    {"image_id": "2", "label": "Tomato___Late_blight"},
+    {"image_id": "3", "label": "Tomato___healthy"}
   ],
   "metadata": {
     "format": "Directory structure with class labels",
-    "last_updated": "2024-11-13"
+    "last_updated": "2024-11-23"
   }
 }

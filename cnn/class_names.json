@@ -1,0 +1,31 @@
+{
+  "class_names": [
+    "Tomato___Early_blight",
+    "Tomato___Late_blight",
+    "Tomato___healthy"
+  ],
+  "classes_info": [
+    {
+      "index": 0,
+      "label": "Tomato___Early_blight",
+      "display_name": "Tomato - Early blight"
+    },
+    {
+      "index": 1,
+      "label": "Tomato___Late_blight",
+      "display_name": "Tomato - Late blight"
+    },
+    {
+      "index": 2,
+      "label": "Tomato___healthy",
+      "display_name": "Tomato - healthy"
+    }
+  ],
+  "image_size": [
+    224,
+    224
+  ],
+  "input_dtype": "float32",
+  "input_range": "0-255 RGB",
+  "architecture": "MobileNetV2 (fine-tuned)"
+}
