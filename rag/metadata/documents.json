@@ -1,0 +1,32 @@
+[
+    {
+        "document_id": "tomato_early_blight_001",
+        "relative_path": "tomato/tomato_early_blight.pdf",
+        "title": "Early blight in tomato and potato",
+        "organization": "University of Minnesota Extension",
+        "source_url": "https://extension.umn.edu/agriculture/specialty-crops/vegetable-farming/disease-management/early-blight-in-tomato-and-potato",
+        "year": null,
+        "crop": "tomato",
+        "disease": "Tomato___Early_blight"
+    },
+    {
+        "document_id": "tomato_late_blight_001",
+        "relative_path": "tomato/tomato_late_blight.pdf",
+        "title": "Late blight of tomato and potato",
+        "organization": "University of Minnesota Extension",
+        "source_url": "https://extension.umn.edu/agriculture/specialty-crops/vegetable-farming/disease-management/late-blight",
+        "year": null,
+        "crop": "tomato",
+        "disease": "Tomato___Late_blight"
+    },
+    {
+        "document_id": "tomato_healthy_001",
+        "relative_path": "tomato/healthy_tomato_guide.pdf",
+        "title": "How to Grow Tomatoes in Your Garden",
+        "organization": "Utah State University Extension",
+        "source_url": "https://extension.usu.edu/yardandgarden/research/tomatoes-in-the-garden.pdf",
+        "year": null,
+        "crop": "tomato",
+        "disease": "Tomato___healthy"
+    }
+]
