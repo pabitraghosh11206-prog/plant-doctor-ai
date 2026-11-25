@@ -18,7 +18,7 @@ import os
 # Add project root to path for imports
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from retrieval.search import search_knowledge
+from rag.llm.retrieval.search import search_knowledge
 
 
 # ============================================

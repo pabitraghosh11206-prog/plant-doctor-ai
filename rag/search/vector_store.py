@@ -8,7 +8,7 @@ No data ingestion yet - just connection and setup logic.
 import chromadb
 import os
 from pathlib import Path
-
+``
 
 class VectorStore:
     """
