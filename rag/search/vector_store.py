@@ -2,76 +2,87 @@
 AgriVision AI - Vector Database Module
 
 Manages ChromaDB for storing and querying embeddings.
-No data ingestion yet - just connection and setup logic.
+Includes:
+- Persistent ChromaDB connection
+- Adding vectors with documents and metadata
+- Searching with optional crop/disease filters
+- Clean result formatting
+- Beginner-friendly debug output
 """
 
-import chromadb
 import os
+import json
 from pathlib import Path
-``
+
+import chromadb
+
 
 class VectorStore:
     """
     ChromaDB wrapper for vector storage and retrieval.
-    
+
     Features:
-    - Persistent storage (saves to disk, survives restarts)
+    - Persistent storage (saved to disk)
     - Single collection: "agrivision_knowledge"
-    - Cosine similarity for similarity search
+    - Cosine similarity search
+    - Optional metadata filters for crop and disease
     """
 
     def __init__(self, db_path="vector_db", collection_name="agrivision_knowledge"):
         """
         Initialize ChromaDB connection.
-        
+
         Args:
-            db_path: Where to store the database (default: "vector_db" folder)
-            collection_name: Name of the collection (default: "agrivision_knowledge")
+            db_path: Folder where the vector database will be stored
+            collection_name: Name of the ChromaDB collection
         """
-        # Use project root relative path for persistence
-        self.db_path = Path(db_path) if not str(db_path).startswith("/") else db_path
-        
-        # If running from project root, make it relative to project
+        # Resolve database path relative to the project root
         project_root = Path(__file__).resolve().parent.parent.parent
-        if not str(self.db_path).startswith("/"):
+
+        self.db_path = Path(db_path)
+        if not self.db_path.is_absolute():
             self.db_path = project_root / self.db_path
-        
-        # Create the vector_db folder if it doesn't exist
-        db_folder = Path(os.path.dirname(self.db_path))
-        db_folder.mkdir(parents=True, exist_ok=True)
-        
+
+        # Make sure the parent directory exists
+        self.db_path.parent.mkdir(parents=True, exist_ok=True)
+
+        self.collection_name = collection_name
+
         # Create persistent ChromaDB client
         self.client = chromadb.PersistentClient(path=str(self.db_path))
-        self.collection_name = collection_name
-        
-        # Get or create the collection (always ensure it exists)
+
+        # Get existing collection or create a new one
         try:
-            self.collection = self.client.get_collection(name=collection_name)
-            print(f"  - Using existing collection")
+            self.collection = self.client.get_collection(name=self.collection_name)
+            print("  - Using existing collection")
         except Exception:
-            # Collection doesn't exist yet - create it with metadata fields
-            self._create_collection(collection_name)
-    
+            self._create_collection(self.collection_name)
+
     def _create_collection(self, name):
-        """Create a new collection (without pre-defined schema)."""
-        # Create collection without metadata schema
-        # Metadata will be provided when adding vectors
+        """Create a new ChromaDB collection."""
         self.collection = self.client.create_collection(name=name)
         print(f"  - Created new collection: '{name}'")
-    
+
     def clear_collection(self):
-        """Delete all vectors in the collection (WARNING: permanent!)."""
-        count = self.collection.count()
-        if count > 0:
-            # Delete all documents - using empty string filter on any field
-            # This is more reliable than getting IDs first
-            self.collection.delete(where={"id": {"$eq": ""}})
-            print(f"✓ Cleared {count} vectors from '{self.collection_name}'")
-        else:
-            print(f"⚠ No vectors to clear in '{self.collection_name}'")
+        """
+        Delete all vectors from the collection.
+
+        WARNING: Permanent operation.
+        """
+        try:
+            items = self.collection.get()
+
+            if items and items.get("ids"):
+                self.collection.delete(ids=items["ids"])
+                print(f"✓ Cleared {len(items['ids'])} vectors from '{self.collection_name}'")
+            else:
+                print(f"⚠ No vectors to clear in '{self.collection_name}'")
+
+        except Exception as e:
+            print(f"⚠ Failed to clear collection: {e}")
 
     def get_vector_count(self):
-        """Get the number of stored vectors."""
+        """Return number of stored vectors."""
         return self.collection.count()
 
     def add_vectors(
@@ -82,66 +93,72 @@ class VectorStore:
         metadata: list[dict] = None
     ):
         """
-        Add embeddings to the collection.
-        
+        Add embeddings, documents, and metadata to the collection.
+
         Args:
-            embeddings: List of embedding vectors [384, 128, ...]
-            chunk_ids: List of unique IDs for each chunk
-            texts: Original text strings (for display)
-            metadata: Optional additional metadata to store
+            embeddings: List of embedding vectors
+            chunk_ids: List of unique IDs
+            texts: Original text chunks
+            metadata: List of metadata dictionaries
         """
-        # Ensure collection exists
-        self.client.get_or_create_collection(name=self.collection_name)
-        
-        if not metadata:
+        if not embeddings:
+            raise ValueError("Embeddings cannot be empty")
+        if not chunk_ids:
+            raise ValueError("Chunk IDs cannot be empty")
+        if not texts:
+            raise ValueError("Texts cannot be empty")
+        if metadata is None or not metadata:
             raise ValueError("Metadata cannot be empty")
-        
-        # Convert all metadata values to strings to avoid type conversion issues
+
+        if not (len(embeddings) == len(chunk_ids) == len(texts) == len(metadata)):
+            raise ValueError(
+                "embeddings, chunk_ids, texts, and metadata must have the same length"
+            )
+
+        # Convert metadata values into ChromaDB-safe values
         compatible_metadata = []
         for m in metadata:
-            compatible_m = {}
+            cleaned = {}
             for k, v in m.items():
                 if v is None:
-                    compatible_m[k] = "null"  # Null values as string
+                    cleaned[k] = ""
                 elif isinstance(v, (list, dict)):
-                    compatible_m[k] = json.dumps(v)  # Complex types as JSON string
+                    cleaned[k] = json.dumps(v)
                 else:
-                    compatible_m[k] = str(v)
-            
-            compatible_metadata.append(compatible_m)
-        
+                    cleaned[k] = str(v)
+            compatible_metadata.append(cleaned)
+
         self.collection.add(
             ids=chunk_ids,
             embeddings=embeddings,
+            documents=texts,
             metadatas=compatible_metadata
         )
+
         print(f"✓ Added {len(embeddings)} vectors to '{self.collection_name}'")
 
     def search(self, query_embedding: list[float], limit: int = 5) -> dict:
         """
-        Search for similar vectors using cosine similarity.
-        
+        Search for similar vectors without metadata filters.
+
         Args:
-            query_embedding: The query vector to search against
-            limit: Number of results to return (default: 5)
-            
+            query_embedding: Query embedding vector
+            limit: Number of results to return
+
         Returns:
-            Dictionary with 'documents' and 'distances' keys
+            Dictionary with documents, metadata, and distances
         """
         results = self.collection.query(
             query_embeddings=[query_embedding],
             n_results=limit,
-            include=["embeddings", "metadatas", "distances"]
+            include=["documents", "metadatas", "distances"]
         )
 
-        # Format results into a clean structure
-        formatted = {
-            "documents": [] if not results.get("embeddings") else [emb[0] for emb in results["embeddings"]],
-            "metadata": [] if not results.get("metadatas") else list(results["metadatas"][0]),
-            "distances": [] if not results.get("distances") else list(results["distances"][0])
+        return {
+            "documents": results.get("documents", [[]])[0] if results.get("documents") else [],
+            "metadata": results.get("metadatas", [[]])[0] if results.get("metadatas") else [],
+            "distances": results.get("distances", [[]])[0] if results.get("distances") else []
         }
-
-        return formatted
 
     def search_with_filters(
         self,
@@ -151,46 +168,56 @@ class VectorStore:
         limit: int = 5
     ) -> dict:
         """
-        Search with optional metadata filters (crop, disease).
-        
+        Search the vector database with optional crop and disease filters.
+
+        This version builds a valid ChromaDB where clause:
+        - no filters -> where=None
+        - one filter -> where={"field": value}
+        - two filters -> where={"$and": [...]}
+
         Args:
-            query_embedding: The query vector to search against
-            crop: Filter by crop type (e.g., "tomato")
-            disease: Filter by disease label (e.g., "Tomato___Early_blight")
+            query_embedding: Query embedding vector
+            crop: Optional crop filter (e.g., "tomato")
+            disease: Optional disease filter (e.g., "Tomato___Early_blight")
             limit: Number of results to return
-            
+
         Returns:
-            Dictionary with filtered and ranked results
+            Dictionary with documents, metadata, and distances
         """
-        # Build filter condition
-        where = {}
-        
+        # Build where clause safely
+        conditions = []
+
         if crop:
-            where["crop"] = {"$eq": crop.lower()}
-        
+            conditions.append({"crop": crop.lower()})
+
         if disease:
-            where["disease"] = {"$eq": disease}
-        
-        # Handle empty string filters (exclude them)
-        for key, val in where.items():
-            if isinstance(val, dict) and "$eq" in val and val["$eq"] == "":
-                del where[key]
-        
+            conditions.append({"disease": disease})
+
+        if len(conditions) == 0:
+            where = None
+        elif len(conditions) == 1:
+            where = conditions[0]
+        else:
+            where = {"$and": conditions}
+
+        # Debug output so you can verify what gets sent to ChromaDB
+        print("\n========== WHERE CLAUSE ==========")
+        print(where)
+        print("==================================\n")
+
         results = self.collection.query(
             query_embeddings=[query_embedding],
             n_results=limit,
-            where=where if where else None,
-            include=["embeddings", "metadatas", "distances"]
+            where=where,
+            include=["documents", "metadatas", "distances"]
         )
-        
+
         return {
-            "documents": results["embeddings"][0] if results.get("embeddings") else [],
-            "metadata": [m for item in results["metadatas"] or [] for m in item] if results.get("metadatas") else [],
-            "distances": results["distances"][0] if results.get("distances") else []
+            "documents": results.get("documents", [[]])[0] if results.get("documents") else [],
+            "metadata": results.get("metadatas", [[]])[0] if results.get("metadatas") else [],
+            "distances": results.get("distances", [[]])[0] if results.get("distances") else []
         }
 
-
-# Convenience functions for easy import
 
 def connect(db_path="vector_db", collection_name="agrivision_knowledge"):
     """Quick connection to the vector database."""
@@ -201,20 +228,20 @@ def connect(db_path="vector_db", collection_name="agrivision_knowledge"):
 
 if __name__ == "__main__":
     import sys
-    
+
     print("=" * 60)
     print("AgriVision AI - Vector Database Connection Test")
     print("=" * 60)
-    
+
     try:
         # Create vector store (will auto-create collection)
         db = connect(collection_name="agrivision_knowledge")
-        
+
         # Verify connection
         print(f"\n✓ Database path: {db.db_path}")
         print(f"✓ Collection name: {db.collection_name}")
         print(f"✓ Vector count before add: {db.get_vector_count()}")
-        
+
         # Test that it persists (add a dummy vector, then restart Python)
         test_embedding = [0.1] * 384  # Dummy 384-dim embedding
         db.add_vectors(
@@ -229,21 +256,21 @@ if __name__ == "__main__":
                 "disease": "Tomato___Early_blight"
             }]
         )
-        
+
         print(f"✓ Vector count after add: {db.get_vector_count()}")
-        
+
         # Test filtering
         query_emb = [0.5] * 384
         filtered = db.search_with_filters(query_embedding=query_emb, crop="tomato", limit=5)
         print(f"✓ Filtered search returned: {len(filtered['metadata'])} results")
-        
+
         print("\n" + "=" * 60)
         print("✅ Vector Store Test PASSED!")
         print("=" * 60)
         print("\nDatabase will persist after Python restart:")
         print(f"  Location: {db.db_path}")
         print(f"  Collection: 'agrivision_knowledge'")
-        
+
     except Exception as e:
         print(f"\n❌ Test FAILED: {e}")
         import traceback
